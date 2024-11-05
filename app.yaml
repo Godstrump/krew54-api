@@ -1,0 +1,35 @@
+runtime: nodejs
+env: flex
+# automatic_scaling:
+#   min_num_instances: 1
+#   max_num_instances: 15
+#   cool_down_period_sec: 180
+#   cpu_utilization:
+#     target_utilization: 0.6
+#   target_concurrent_requests: 100
+# instance_class: F4_1G
+# automatic_scaling:
+#   min_idle_instances: automatic
+#   max_idle_instances: automatic
+#   min_pending_latency: automatic
+#   max_pending_latency: automatic
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+env_variables:
+  DATABASE_URL: postgres://yloxxlgy:Q9p15vGpbrLWR5W3s5-JIK8ILSDuyc4-@mouse.db.elephantsql.com/yloxxlgy
+
+  JWT_SECRET: hguigubjkjhihh
+  JWT_EXPIRE: 30d
+
+  MAILGUN_API_KEY: 1147b9f34f4169dba5b2d1f001338137-381f2624-9e1751df
+  MAILGUN_DOMAIN: mail.krew54.com
+  MAILGUN_SENDER_EMAIL: Krew54<noreply@mail.krew54.com>
+  MAILGUN_API_URL: https://api.eu.mailgun.net
+handlers:
+- url: /api/.*
+  secure: always
+  script: auto
